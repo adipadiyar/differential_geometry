@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+
+\newtheorem{claim}{Claim}
+
+\title{Differential Geometry Assignment 1}
+
+\author{Aditya Padiyar}
+
+\date{August 2026}
+
+\begin{document}
+
+\maketitle
+
+Let $\Psi = \Psi_p \in L(C^\infty(M),[T_p(M)]^*)$ be the derivative at $p \in M$
+
+We have a local parametrization $\phi: B \to V$ with inverse $\varphi$
+
+\section{Bump functions}
+
+\begin{itemize}
+    \item We have $f \in C^\infty(\mathbb{R})$ given by $f(x) = \begin{cases}
+    e^{-\frac{1}{x^2}} & \text{ if } x > 0 \\
+    0 & \text{ if } x \leq 0 
+    \end{cases}$
+
+    \item Define $g \in C^\infty(\mathbb{R})$ by $g(x) = \frac{f(x)}{f(x) + f(1-x)}$. We have $g(x) = 0$ for $x \leq 0$ and $g(x)=1$ for $x \geq 1$
+    
+    \item Define $h \in C^\infty(\mathbb{R}^n)$ by $h(x)= g(4-2||x||)$. We have $h(x)=1$ for $||x|| \leq 1$ and $h(x)=0$ for $||x|| \geq 2$
+    
+\end{itemize}
+
+\begin{claim}
+Suppose $K \subseteq U \subseteq M$ where $K$ is compact and $U$ is open in $M$. Then there is $f \in C^\infty(M,[0,1])$ with support inside $U$ such that $f(x)=1$ for all $x \in K$ 
+\end{claim}
+
+\begin{proof} There are multiple steps
+    \begin{itemize}
+        \item By local compactness of $M$, get $V \subseteq \overline{V} \subseteq U$.
+        
+        \item For each $x \in K$, get a local parametrization $\phi_x:B_3 \to V_x \subseteq V$. Define $f_x \in C^\infty(M,[0,1])$ by $f_x(q)=\begin{cases}
+        h((\phi_x)^{-1}(q)) & \text{ if } q \in V_x \\
+        0 & \text{ if } q \notin V_x
+    \end{cases}$
+
+    \item By compactness, get $x_1,x_2,\dots,x_n$ such that $V_{x_i}$ cover $K$. Let $f= 1 - \prod (1-f_{x_i})$
+    \end{itemize}
+    
+\end{proof}
+
+\begin{claim}
+    Suppose $g \in C^\infty(U)$. Then there is $p \in V \subseteq U$ and $f \in C^\infty(M)$ such that $f_{|V}= g_{|V}$
+\end{claim}
+
+\section{Point derivations}
+
+\begin{itemize}
+    \item Let $\text{Der}_p \subseteq [C^\infty(M)]^*$ denote the space of point derivations at $p$. 
+    \item Let $W=\bigcap_{B \in \text{Der}_p} \text{ker }B$
+\end{itemize}
+
+\begin{claim}
+    Suppose $f \in C^\infty(M)$ vanishes in some neighborhood of $p$. Then $f \in W$
+\end{claim}
+
+\begin{claim}
+    Let $v \in T_pM$. Then $D_v \in \text{Der}_p$
+\end{claim}
+
+\begin{claim}
+    We have $\tilde{\Psi}(J(v))=D_v$, where $\tilde{\Psi}$ is the dual map and $J$ is the canonical evaluation map.
+\end{claim}
+
+\begin{claim}
+    We have $W = \text{ker } \Psi$
+\end{claim}
+
+\begin{proof} We prove both inclusions separately.
+
+    \begin{itemize}
+        \item Suppose $df_p=0$. By Hadamard's lemma there are $g_i \in C^\infty(B)$ such that \[f(\phi(x)))= f(p) + \sum_{i=1}^n x_i g_i(x)\]
+        
+        Differentiating, we see that $g_i(0)=0$. By Claim 2, it suffices to prove that $\sum_{i=1}^n (\varphi_i) [g_i \circ \varphi] \in W$. But this follows from the product property.
+
+    \item The other direction follows from Claim 4
+    \end{itemize}
+    
+\end{proof}
+
+\begin{claim}
+    $\Psi$ is surjective
+\end{claim}
+
+\begin{proof} Here are the steps
+    
+    \begin{itemize}
+        \item Let $v_i = (D\phi)_0 e_i$ and $g_i$ be the dual basis
+        \item Get $f_i \in C^\infty(M)$ and $U \subseteq V$ such that $f_i(q)=\varphi_i(q)$ for all $q \in U$.
+        \item Then $\Psi(f_i)=g_i$
+    \end{itemize}
+      
+\end{proof}
+
+\begin{claim}
+    $\tilde{\Psi}$ is injective
+\end{claim}
+
+\begin{claim}
+    $v \to D_v$ is injective
+\end{claim}
+
+\begin{claim}
+    We have $\text{range}(\tilde{\Psi})=\text{Der}_p$
+\end{claim}
+
+\begin{proof}
+    By Claim 2 we get an injective linear map from $\text{Der}_p$ to $\left (\frac {C^\infty(M)}{W} \right) ^*$, which by Claims 5 and 6 is isomorphic to $T_pM$.
+\end{proof}
+
+\section{Derivations}
+
+Let $\text{Der}$ denote the space of derivations.
+
+\begin{claim}
+    For any $B \in \text{Der}, B_p \in \text{Der}_p$
+\end{claim}
+
+\begin{claim}
+    For any $X \in \mathbb{X}(M)$, we have $D_X \in \text{Der}$
+\end{claim}
+
+Define $\Phi: \text{Der} \to \text{Map}(M,\mathbb{R}^k)$ by $D_{\Phi(B)(p)} = B_p$
+
+\begin{claim}
+    We have $\text{range } \Phi \subseteq \mathbb{X}(M)$
+\end{claim}
+
+\begin{proof}
+    Get $f_i$ as before. We have $B_p = \sum_{i=1}^{n} B_p f_i D_{\phi_i(p)}$
+\end{proof}
+
+\begin{claim}
+    The map $X \to D_X$ is a linear isomorphism onto Der with inverse $\Phi$
+\end{claim}
+
+\section{Regular curves}
+
+\begin{claim}
+    There is a local parametrization $\phi: B \to V$ such that $(D\phi)_0$ is an isometry
+\end{claim}
+
+\begin{proof}
+    Let $\tilde{\phi}: B \to V$ be a local parametrization and let $v_1,v_2,\dots,v_n$ be an orthonormal basis of $T_pM$. We get $A \in GL(\mathbb{R}^n)$ such that $(D\tilde{\phi})_0Ae_i=v_i$. Define $\phi: A^{-1}B \to V$ by $\phi = \tilde{\phi} \circ A$.
+\end{proof}
+
+\begin{claim}
+    We can make $L(\eta) - d_M(p,q) $ arbitrarily small for a piecewise regular curve $\eta$ from $p$ to $q$  
+\end{claim}
+
+\begin{proof} Here are the steps
+    \begin{itemize}
+        \item Get a piecewise smooth curve $\gamma$ from $p$ to $q$ 
+        
+        \item By compactness, we may reduce to the case that there is a \\ local parametrization $\phi: B \to V$ such that $\gamma \subseteq V$ and by Claim 8 we may assume $||A_x||,||B_x|| \leq 1 +\delta$, where $A_x = (D\phi)_x$ and $B_x A_x=1$
+        
+        \item Define $\eta(t)= \phi(t\varphi(q)+(1-t)\varphi(p))$
+        
+        \item We have $L(\eta) \leq (1+\delta)^2 L(\gamma)$
+    \end{itemize}
+    
+\end{proof}
+
+\end{document}
