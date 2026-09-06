@@ -1,14 +1,9 @@
 \documentclass{article}
 
-
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
 
-
 \newtheorem{definition}{Definition}
-\newtheorem{example}{Example}
-\newtheorem{proposition}{Proposition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{remark}{Remark}
+\newtheorem{claim}{Claim}
 
 \title{Differential Geometry Notes}
 \author{Aditya Padiyar}
@@ -21,6 +16,46 @@
 \begin{definition}
     The first fundamental form of $M$ at $p$ is defined by restricting the standard inner product on $\mathbb{R}^k$ to the tangent space. We have $g_p: T_pM \times T_pM \to \mathbb{R}$
 \end{definition}
+
+\begin{definition}
+    A diffeomorphism $F:M \to N$ is called an isometry if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
+\end{definition}
+
+\begin{definition}
+    A smooth map $F: M \to N$ is called a local isometry at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is an isometry
+\end{definition}
+
+\begin{claim}
+    Two manifolds $M$ and $N$ are locally isometric around $p$ and $q$ if and only if there are local parametrizations $\phi: \Omega \to U$ and $\varphi : \Omega \to V$ such that $g_{\phi(a)}(v_i,v_j)=h_{\varphi(a)}(w_i,w_j)$ for all $a \in \Omega$ 
+\end{claim}
+
+\begin{definition}
+    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY$ given by $p \to \pi_p(DY_p(X_p))$
+\end{definition}
+
+\begin{claim}
+    Suppose $F: M \to N$ is an isometry then $\nabla_{F_*X}(F_*Y)=F_*(\nabla_XY)$
+\end{claim}
+
+\begin{definition}
+    Suppose $\gamma: I \to M$ is a smooth curve. A smooth vector field along $\gamma$ is a map $V: I \to \mathbb{R}^k$ such that $V(t) \in T_{\gamma (t)}M$
+\end{definition}
+
+The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
+
+\begin{definition}
+    We have  $\text{cov}_\gamma \in L(\mathcal{X}(\gamma))$ given by $V \to (t \to \pi_{\gamma(t)}\dot{V}(t))$
+\end{definition}
+
+
+
+
+
+
+
+
+
+
 
 
 
