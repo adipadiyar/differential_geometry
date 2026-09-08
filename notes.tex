@@ -13,29 +13,87 @@
 
 \maketitle
 
+\section{Vector fields}
+
+\begin{claim}
+    The map $X,Y \to D_XY$ is bilinear and has the following properties:
+    \begin{itemize}
+        \item $D_{fX}Y=f(D_XY)$
+        \item $D_X(fY)=f(D_XY) + (D_Xf)Y$
+        \item $D_XY-D_YX=[X,Y]$
+        \item $D_X\langle Y, Z \rangle = \langle D_XY,Z \rangle + \langle Y, D_XZ \rangle$
+    \end{itemize}
+\end{claim}
+
+\begin{claim}
+    Suppose $\phi: \Omega \to V$ is a local parametrization. Then $D_{\phi_i}\phi_j=\frac{\partial \phi}{\partial x_i \partial x_j}$
+\end{claim}
+
+\section{Riemannian metric}
+
+\begin{definition}
+    Suppose $\gamma:[a,b] \to M$ is a piecewise smooth curve. \\ A reparametrization of $\gamma$ is given by $\gamma \circ \phi$, where $\phi:[c,d] \to [a,b]$ is a homeomorphism with a partition $c_0,c_1,\dots,c_k$ such that $\phi_{|[c_{i-1},c_i]}$ is a diffeomorphism onto its image
+\end{definition}
+
+\begin{claim}
+    Suppose $M$ is connected. Then there is a piecewise regular curve between any two points
+\end{claim}
+
+\begin{definition}
+    Suppose $M$ is connected. Then we define the Riemannian metric by \[d_M(p,q)=\text{inf}\{L(\gamma):\gamma \text{ is a piecewise smooth curve from }p \text{ to }q\}\]
+\end{definition}
+
+\begin{claim}
+    The topology induced by the Riemannian metric is the same as the subspace topology $M$ inherits from $\mathbb{R}^k$
+\end{claim}
+
+\begin{claim}
+    If there is a piecewise smooth curve from $p$ to $q$ of length $d_M(p,q)$ then there is such a piecewise regular curve as well. This is true for every $p$ and $q$ if $M$ is closed in $\mathbb{R}^k$
+\end{claim}
+
+\begin{definition}
+    A diffeomorphism $F:M \to N$ is called a Riemannian isometry if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
+\end{definition}
+
+\begin{claim}
+    Every Riemannian isometry is an isometry with respect to the Riemannian metric
+\end{claim}
+
+\begin{definition}
+    A smooth map $F: M \to N$ is called a local Riemannian isometry at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is a Riemannian isometry
+\end{definition}
+
+\section{First fundamental form}
+
 \begin{definition}
     The first fundamental form of $M$ at $p$ is defined by restricting the standard inner product on $\mathbb{R}^k$ to the tangent space. We have $g_p: T_pM \times T_pM \to \mathbb{R}$
-\end{definition}
-
-\begin{definition}
-    A diffeomorphism $F:M \to N$ is called an isometry if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
-\end{definition}
-
-\begin{definition}
-    A smooth map $F: M \to N$ is called a local isometry at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is an isometry
 \end{definition}
 
 \begin{claim}
     Two manifolds $M$ and $N$ are locally isometric around $p$ and $q$ if and only if there are local parametrizations $\phi: \Omega \to U$ and $\varphi : \Omega \to V$ such that $g_{\phi(a)}(v_i,v_j)=h_{\varphi(a)}(w_i,w_j)$ for all $a \in \Omega$ 
 \end{claim}
 
+\section{Covariant derivative}
+
 \begin{definition}
-    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY$ given by $p \to \pi_p(DY_p(X_p))$
+    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY=\pi \circ D_XY$ 
 \end{definition}
 
 \begin{claim}
     Suppose $F: M \to N$ is an isometry then $\nabla_{F_*X}(F_*Y)=F_*(\nabla_XY)$
 \end{claim}
+
+\begin{claim}
+    The map $X,Y \to \nabla_XY$ is bilinear and has the following properties:
+    \begin{itemize}
+        \item $\nabla_XY-\nabla_YX = [X,Y]$
+        \item $\nabla_{fX}Y=f(\nabla_XY)$
+        \item $\nabla_X(fY)=f(\nabla_XY) + (D_Xf)Y$
+    \end{itemize}
+    
+\end{claim}
+
+\section{Vector field along a curve}
 
 \begin{definition}
     Suppose $\gamma: I \to M$ is a smooth curve. A smooth vector field along $\gamma$ is a map $V: I \to \mathbb{R}^k$ such that $V(t) \in T_{\gamma (t)}M$
@@ -46,6 +104,24 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \begin{definition}
     We have  $\text{cov}_\gamma \in L(\mathcal{X}(\gamma))$ given by $V \to (t \to \pi_{\gamma(t)}\dot{V}(t))$
 \end{definition}
+
+\section{Second fundamental form}
+
+\begin{definition}
+    The second fundamental form of $M$ at $p$ is the bilinear map $\Pi_p: T_pM \times T_pM \to \mathbb{R}^k$ given by $v,w \to [(D\pi)_pv]w$
+\end{definition}
+
+\begin{claim}
+    $\text{range }\Pi_p \subseteq N_pM$ for all $p$
+\end{claim}
+
+\begin{claim}
+    The second fundamental form is symmetric
+\end{claim}
+
+
+
+
 
 
 
