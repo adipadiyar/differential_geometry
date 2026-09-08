@@ -13,7 +13,7 @@
 
 \maketitle
 
-\section{Vector fields}
+\section{The derivative}
 
 \begin{claim}
     The map $X,Y \to D_XY$ is bilinear and has the following properties:
@@ -27,6 +27,20 @@
 
 \begin{claim}
     Suppose $\phi: \Omega \to V$ is a local parametrization. Then $D_{\phi_i}\phi_j=\frac{\partial \phi}{\partial x_i \partial x_j}$
+\end{claim}
+
+Suppose $F:M \to N$ is a diffeomorphism
+
+\begin{claim}
+     Suppose $v \in T_pM$. Then for all $f \in C^\infty(M)$ we have $D_v(f \circ F)=(D_{F_*v})f$
+\end{claim}
+
+\begin{claim}
+    We have $F_*[X,Y]=[F_*X,F_*Y]$
+\end{claim}
+
+\begin{claim}
+    We have $\langle F_*X , F_*Y \rangle = \langle X , Y \rangle $
 \end{claim}
 
 \section{Riemannian metric}
@@ -76,12 +90,18 @@
 \section{Covariant derivative}
 
 \begin{definition}
-    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY=\pi \circ D_XY$ 
+    We have $\pi_p \in \text{End}(\mathbb{R}^k)$ which is the orthogonal projection onto $T_pM$. We define $\hat{\pi}_p$ as $I-\pi_p$
 \end{definition}
 
-\begin{claim}
-    Suppose $F: M \to N$ is an isometry then $\nabla_{F_*X}(F_*Y)=F_*(\nabla_XY)$
-\end{claim}
+\begin{definition}
+    Suppose $v \in T_pM$. Define $\nabla_v \in L(\mathcal{X}(M),T_pM)$ by $X \to \pi_p (DX)_p v$
+\end{definition}
+
+
+
+\begin{definition}
+    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY=(p \to \pi_p (D_XY)(p))$ 
+\end{definition}
 
 \begin{claim}
     The map $X,Y \to \nabla_XY$ is bilinear and has the following properties:
@@ -90,7 +110,20 @@
         \item $\nabla_{fX}Y=f(\nabla_XY)$
         \item $\nabla_X(fY)=f(\nabla_XY) + (D_Xf)Y$
     \end{itemize}
-    
+\end{claim}
+
+\begin{definition}
+    Suppose $\phi: \Omega \to V$ is a local parametrization. The Christoffel symbols $\Gamma_{ij}^k \in C^\infty(\Omega)$ are defined by $(\nabla_{\phi_i}\phi_j)(\phi(a)) = \sum_k \Gamma_{ij}^k(a) \phi_k(a)$
+\end{definition}
+
+Suppose $F:M \to N$ is a Riemannian isometry
+
+\begin{claim}
+    We have $\nabla_{F_*X}(F_*Y)=F_*(\nabla_XY)$
+\end{claim}
+
+\begin{claim}
+    We have $\nabla_{F_*v} \circ F_* = DF_p \circ \nabla_v$
 \end{claim}
 
 \section{Vector field along a curve}
@@ -108,15 +141,19 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \section{Second fundamental form}
 
 \begin{definition}
-    The second fundamental form of $M$ at $p$ is the bilinear map $\Pi_p: T_pM \times T_pM \to \mathbb{R}^k$ given by $v,w \to [(D\pi)_pv]w$
+    The second fundamental form of $M$ at $p$ is the bilinear map $S_p: T_pM \times T_pM \to \mathbb{R}^k$ given by $v,w \to [(D\pi)_pv]w$
 \end{definition}
 
 \begin{claim}
-    $\text{range }\Pi_p \subseteq N_pM$ for all $p$
+    $\text{range }S_p \subseteq N_pM$ for all $p$
 \end{claim}
 
 \begin{claim}
     The second fundamental form is symmetric
+\end{claim}
+
+\begin{claim}
+    We have $S_p(X_p,Y_p)=\hat{\pi}_p((D_XY)(p))$
 \end{claim}
 
 
