@@ -84,7 +84,7 @@ Suppose $F:M \to N$ is a diffeomorphism
 \end{definition}
 
 \begin{claim}
-    Two manifolds $M$ and $N$ are locally isometric around $p$ and $q$ if and only if there are local parametrizations $\phi: \Omega \to U$ and $\varphi : \Omega \to V$ such that $g_{\phi(a)}(v_i,v_j)=h_{\varphi(a)}(w_i,w_j)$ for all $a \in \Omega$ 
+    Two manifolds $M$ and $N$ admit a local Riemannian isometry from $p$ to $q$ if and only if there are local parametrizations $\phi: \Omega \to U$ and $\varphi : \Omega \to V$ such that $g_{\phi(a)}(v_i,v_j)=h_{\varphi(a)}(w_i,w_j)$ for all $a \in \Omega$, where $v_i = \phi_i(\phi(a))$ and $w_i = \varphi_i(\varphi(a))$ 
 \end{claim}
 
 \section{Covariant derivative}
@@ -116,6 +116,10 @@ Suppose $F:M \to N$ is a diffeomorphism
     Suppose $\phi: \Omega \to V$ is a local parametrization. The Christoffel symbols $\Gamma_{ij}^k \in C^\infty(\Omega)$ are defined by $(\nabla_{\phi_i}\phi_j)(\phi(a)) = \sum_k \Gamma_{ij}^k(a) \phi_k(a)$
 \end{definition}
 
+\begin{definition}
+    The curvature tensor of $X,Y,Z$ is defined by $R(X,Y,Z)=\nabla_X(\nabla_YZ)-\nabla_Y(\nabla_XZ)-\nabla_{[X,Y]}Z$
+\end{definition}
+
 Suppose $F:M \to N$ is a Riemannian isometry
 
 \begin{claim}
@@ -124,6 +128,10 @@ Suppose $F:M \to N$ is a Riemannian isometry
 
 \begin{claim}
     We have $\nabla_{F_*v} \circ F_* = DF_p \circ \nabla_v$
+\end{claim}
+
+\begin{claim}
+    We have $F_*[R(X,Y,Z)]=R(F_*X,F_*Y,F_*Z)$
 \end{claim}
 
 \section{Vector field along a curve}
@@ -137,6 +145,14 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \begin{definition}
     We have  $\text{cov}_\gamma \in L(\mathcal{X}(\gamma))$ given by $V \to (t \to \pi_{\gamma(t)}\dot{V}(t))$
 \end{definition}
+
+\begin{definition}
+    A vector field $V$ along $\gamma$ is called parallel if $V \in \text{ker} (\text{cov}_\gamma)$
+\end{definition}
+
+\begin{claim}
+    Suppose $t_0 \in I$, $p_0=\gamma(t_0)$ and $v_0 \in T_{p_0}M$. There is a unique parallel vector field $V$ satisfying $V(t_0)=v_0$
+\end{claim}
 
 \section{Second fundamental form}
 
