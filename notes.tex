@@ -15,6 +15,18 @@
 
 \section{The derivative}
 
+\begin{definition}
+    Define $\text{grad} \in L(C^\infty(M),\mathcal{X}(M))$ by $\langle v,\text{grad}_f(p) \rangle = Df_p(v)$ for all $v \in T_pM$
+\end{definition}
+
+\begin{definition}
+    Define $\text{Hess}_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_vX_f,w\rangle)\]
+\end{definition}
+
+\begin{claim}
+    $\text{range }\text{Hess}_p \subseteq (T_pM)^{(2)}_{\text{sym}}$
+\end{claim}
+
 \begin{claim}
     The map $X,Y \to D_XY$ is bilinear and has the following properties:
     \begin{itemize}
@@ -48,6 +60,10 @@ Suppose $F:M \to N$ is a diffeomorphism
 \begin{definition}
     Suppose $\gamma:[a,b] \to M$ is a piecewise smooth curve. \\ A reparametrization of $\gamma$ is given by $\gamma \circ \phi$, where $\phi:[c,d] \to [a,b]$ is a homeomorphism with a partition $c_0,c_1,\dots,c_k$ such that $\phi_{|[c_{i-1},c_i]}$ is a diffeomorphism onto its image
 \end{definition}
+
+\begin{claim}
+    For any $\gamma$ piecewise regular, the map \[c \to \text{length}(\gamma_{[a,c]})\] is a valid reparametrization
+\end{claim}
 
 \begin{claim}
     Suppose $M$ is connected. Then there is a piecewise regular curve between any two points
@@ -134,7 +150,7 @@ Suppose $F:M \to N$ is a Riemannian isometry
     We have $F_*[R(X,Y,Z)]=R(F_*X,F_*Y,F_*Z)$
 \end{claim}
 
-\section{Vector field along a curve}
+\section{Vector fields along a curve}
 
 \begin{definition}
     Suppose $\gamma: I \to M$ is a smooth curve. A smooth vector field along $\gamma$ is a map $V: I \to \mathbb{R}^k$ such that $V(t) \in T_{\gamma (t)}M$
@@ -154,7 +170,27 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
     Suppose $t_0 \in I$, $p_0=\gamma(t_0)$ and $v_0 \in T_{p_0}M$. There is a unique parallel vector field $V$ satisfying $V(t_0)=v_0$
 \end{claim}
 
+\begin{definition}
+    Let $t_1,t_2 \in I$. We have the parallel transport map $P_{t_1t_2} \in L(T_{\gamma(t_1)}M,T_{\gamma(t_2)}M)$ 
+\end{definition}
+
+\begin{claim}
+    $P_{t_1t_2}$ is an isometry
+\end{claim}
+
+\begin{claim}
+    $P_{t_1t_2}$ is invertible with inverse $P_{t_2t_1}$
+\end{claim}
+
+\begin{claim}
+    Suppose $t_0$ is in the interior of $I$. Then we have \[\nabla_vX= \text{lim}_{t \to t_0}\frac{P_{tt_0}(X(\gamma(t)))- X_p}{t-t_0}\]
+\end{claim}
+
 \section{Second fundamental form}
+
+\begin{definition}
+    $N_pM$ is the orthogonal complement of $T_pM$ in $\mathbb{R}^k$
+\end{definition}
 
 \begin{definition}
     The second fundamental form of $M$ at $p$ is the bilinear map $S_p: T_pM \times T_pM \to \mathbb{R}^k$ given by $v,w \to [(D\pi)_pv]w$
@@ -171,24 +207,5 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \begin{claim}
     We have $S_p(X_p,Y_p)=\hat{\pi}_p((D_XY)(p))$
 \end{claim}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 \end{document}
