@@ -16,11 +16,11 @@
 \section{The derivative}
 
 \begin{definition}
-    Define $\text{grad} \in L(C^\infty(M),\mathcal{X}(M))$ by $\langle v,\text{grad}_f(p) \rangle = Df_p(v)$ for all $v \in T_pM$
+    Define $\textbf{grad} \in L(C^\infty(M),\mathcal{X}(M))$ by $\langle v,\text{grad}_f(p) \rangle = Df_p(v)$ for all $v \in T_pM$
 \end{definition}
 
 \begin{definition}
-    Define $\text{Hess}_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_vX_f,w\rangle)\]
+    Define $\textbf{Hess}_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_vX_f,w\rangle)\]
 \end{definition}
 
 \begin{claim}
@@ -58,7 +58,7 @@ Suppose $F:M \to N$ is a diffeomorphism
 \section{Riemannian metric}
 
 \begin{definition}
-    Suppose $\gamma:[a,b] \to M$ is a piecewise smooth curve. \\ A reparametrization of $\gamma$ is given by $\gamma \circ \phi$, where $\phi:[c,d] \to [a,b]$ is a homeomorphism with a partition $c_0,c_1,\dots,c_k$ such that $\phi_{|[c_{i-1},c_i]}$ is a diffeomorphism onto its image
+    Suppose $\gamma:[a,b] \to M$ is a piecewise smooth curve. \\ A \textbf{reparametrization} of $\gamma$ is given by $\gamma \circ \phi$, where $\phi:[c,d] \to [a,b]$ is a homeomorphism with a partition $c_0,c_1,\dots,c_k$ such that $\phi_{|[c_{i-1},c_i]}$ is a diffeomorphism onto its image
 \end{definition}
 
 \begin{claim}
@@ -70,19 +70,27 @@ Suppose $F:M \to N$ is a diffeomorphism
 \end{claim}
 
 \begin{definition}
-    Suppose $M$ is connected. Then we define the Riemannian metric by \[d_M(p,q)=\text{inf}\{L(\gamma):\gamma \text{ is a piecewise smooth curve from }p \text{ to }q\}\]
+    Suppose $M$ is connected. Then we define the \textbf{Riemannian metric} by \[d_M(p,q)=\text{inf}\{L(\gamma):\gamma \text{ is a piecewise smooth curve from }p \text{ to }q\}\]
 \end{definition}
 
 \begin{claim}
     The topology induced by the Riemannian metric is the same as the subspace topology $M$ inherits from $\mathbb{R}^k$
 \end{claim}
 
+\begin{definition}
+    A piecewise smooth curve $\gamma$ from $p$ to $q$ is \textbf{length minimizing} if it has length $d_M(p,q)$
+\end{definition}
+
 \begin{claim}
-    If there is a piecewise smooth curve from $p$ to $q$ of length $d_M(p,q)$ then there is such a piecewise regular curve as well. This is true for every $p$ and $q$ if $M$ is closed in $\mathbb{R}^k$
+    If there is a length minimizing curve from $p$ to $q$ then there is such a length minimizing piecewise regular curve as well 
+\end{claim}
+
+\begin{claim}
+    If $M$ is closed in $\mathbb{R}^k$ then there is a length minimizing curve between any two points
 \end{claim}
 
 \begin{definition}
-    A diffeomorphism $F:M \to N$ is called a Riemannian isometry if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
+    A diffeomorphism $F:M \to N$ is called a \textbf{Riemannian isometry} if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
 \end{definition}
 
 \begin{claim}
@@ -90,13 +98,13 @@ Suppose $F:M \to N$ is a diffeomorphism
 \end{claim}
 
 \begin{definition}
-    A smooth map $F: M \to N$ is called a local Riemannian isometry at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is a Riemannian isometry
+    A smooth map $F: M \to N$ is called a \textbf{local Riemannian isometry} at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is a Riemannian isometry
 \end{definition}
 
 \section{First fundamental form}
 
 \begin{definition}
-    The first fundamental form of $M$ at $p$ is defined by restricting the standard inner product on $\mathbb{R}^k$ to the tangent space. We have $g_p: T_pM \times T_pM \to \mathbb{R}$
+    The \textbf{first fundamental form} of $M$ at $p$ is defined by restricting the standard inner product on $\mathbb{R}^k$ to the tangent space. We have $g_p: T_pM \times T_pM \to \mathbb{R}$
 \end{definition}
 
 \begin{claim}
@@ -116,7 +124,7 @@ Suppose $F:M \to N$ is a diffeomorphism
 
 
 \begin{definition}
-    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY=(p \to \pi_p (D_XY)(p))$ 
+    Suppose $X,Y \in \mathcal{X}(M)$ are smooth vector fields. Then we have the smooth vector field $\nabla_XY=(p \to \pi_p (D_XY)(p))$ called the \textbf{Levi-Civita connection} of $X$ and $Y$
 \end{definition}
 
 \begin{claim}
@@ -129,11 +137,11 @@ Suppose $F:M \to N$ is a diffeomorphism
 \end{claim}
 
 \begin{definition}
-    Suppose $\phi: \Omega \to V$ is a local parametrization. The Christoffel symbols $\Gamma_{ij}^k \in C^\infty(\Omega)$ are defined by $(\nabla_{\phi_i}\phi_j)(\phi(a)) = \sum_k \Gamma_{ij}^k(a) \phi_k(a)$
+    Suppose $\phi: \Omega \to V$ is a local parametrization. The \textbf{Christoffel symbols} $\Gamma_{ij}^k \in C^\infty(\Omega)$ are defined by $(\nabla_{\phi_i}\phi_j)(\phi(a)) = \sum_k \Gamma_{ij}^k(a) \phi_k(a)$
 \end{definition}
 
 \begin{definition}
-    The curvature tensor of $X,Y,Z$ is defined by $R(X,Y,Z)=\nabla_X(\nabla_YZ)-\nabla_Y(\nabla_XZ)-\nabla_{[X,Y]}Z$
+    The \textbf{curvature tensor} of $X,Y,Z$ is defined by $R(X,Y,Z)=\nabla_X(\nabla_YZ)-\nabla_Y(\nabla_XZ)-\nabla_{[X,Y]}Z$
 \end{definition}
 
 Suppose $F:M \to N$ is a Riemannian isometry
@@ -163,7 +171,7 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \end{definition}
 
 \begin{definition}
-    A vector field $V$ along $\gamma$ is called parallel if $V \in \text{ker} (\text{cov}_\gamma)$
+    A vector field $V$ along $\gamma$ is called \textbf{parallel} to $\gamma$ if $V \in \text{ker} (\text{cov}_\gamma)$
 \end{definition}
 
 \begin{claim}
@@ -171,7 +179,7 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \end{claim}
 
 \begin{definition}
-    Let $t_1,t_2 \in I$. We have the parallel transport map $P_{t_1t_2} \in L(T_{\gamma(t_1)}M,T_{\gamma(t_2)}M)$ 
+    Let $t_1,t_2 \in I$. We have the \textbf{parallel transport} map $P_{t_1t_2} \in L(T_{\gamma(t_1)}M,T_{\gamma(t_2)}M)$ 
 \end{definition}
 
 \begin{claim}
@@ -186,6 +194,32 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
     Suppose $t_0$ is in the interior of $I$. Then we have \[\nabla_vX= \text{lim}_{t \to t_0}\frac{P_{tt_0}(X(\gamma(t)))- X_p}{t-t_0}\]
 \end{claim}
 
+\section{Geodesics}
+
+\begin{definition}
+    A smooth curve $\gamma$ is a \textbf{geodesic} if $\gamma'$ is parallel to $\gamma$
+\end{definition}
+
+Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamma(0)=p$ and $\gamma'(0)=v$
+
+\begin{claim}
+    There is such a geodesic $\gamma$ on $(-\epsilon,\epsilon)$
+\end{claim}
+
+\begin{claim}
+    Any two such geodesics agree on their common domain
+\end{claim}
+
+\begin{claim}
+    There is a unique \textbf{maximal geodesic} $\gamma_v$ of this kind on an open interval $I_v$
+\end{claim}
+
+\begin{claim}
+    $I_{cv}=\frac{I_v}{c}$ and $\gamma_{cv}(t)=\gamma_v(ct)$
+\end{claim}
+
+\section{Tangent bundle}
+
 \section{Second fundamental form}
 
 \begin{definition}
@@ -193,7 +227,7 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \end{definition}
 
 \begin{definition}
-    The second fundamental form of $M$ at $p$ is the bilinear map $S_p: T_pM \times T_pM \to \mathbb{R}^k$ given by $v,w \to [(D\pi)_pv]w$
+    The \textbf{second fundamental form} of $M$ at $p$ is the bilinear map $S_p: T_pM \times T_pM \to \mathbb{R}^k$ given by $v,w \to [(D\pi)_pv]w$
 \end{definition}
 
 \begin{claim}
