@@ -16,11 +16,11 @@
 \section{The derivative}
 
 \begin{definition}
-    Define $\textbf{grad} \in L(C^\infty(M),\mathcal{X}(M))$ by $\langle v,\text{grad}_f(p) \rangle = Df_p(v)$ for all $v \in T_pM$
+    Define $grad \in L(C^\infty(M),\mathcal{X}(M))$ by $\langle v,\text{grad}_f(p) \rangle = Df_p(v)$ for all $v \in T_pM$
 \end{definition}
 
 \begin{definition}
-    Define $\textbf{Hess}_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_vX_f,w\rangle)\]
+    Define $Hess_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_vX_f,w\rangle)\]
 \end{definition}
 
 \begin{claim}
@@ -58,6 +58,14 @@ Suppose $F:M \to N$ is a diffeomorphism
 \section{Riemannian metric}
 
 \begin{definition}
+    A diffeomorphism $F:M \to N$ is called a \textbf{Riemannian isometry} if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
+\end{definition}
+
+\begin{definition}
+    A smooth map $F: M \to N$ is called a \textbf{local Riemannian isometry} at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is a Riemannian isometry
+\end{definition}
+
+\begin{definition}
     Suppose $\gamma:[a,b] \to M$ is a piecewise smooth curve. \\ A \textbf{reparametrization} of $\gamma$ is given by $\gamma \circ \phi$, where $\phi:[c,d] \to [a,b]$ is a homeomorphism with a partition $c_0,c_1,\dots,c_k$ such that $\phi_{|[c_{i-1},c_i]}$ is a diffeomorphism onto its image
 \end{definition}
 
@@ -65,12 +73,14 @@ Suppose $F:M \to N$ is a diffeomorphism
     For any $\gamma$ piecewise regular, the map \[c \to \text{length}(\gamma_{[a,c]})\] is a valid reparametrization
 \end{claim}
 
+Suppose $M$ is connected
+
 \begin{claim}
-    Suppose $M$ is connected. Then there is a piecewise regular curve between any two points
+    There is a piecewise regular curve between any two points
 \end{claim}
 
 \begin{definition}
-    Suppose $M$ is connected. Then we define the \textbf{Riemannian metric} by \[d_M(p,q)=\text{inf}\{L(\gamma):\gamma \text{ is a piecewise smooth curve from }p \text{ to }q\}\]
+    Define the \textbf{Riemannian metric} by \[d_M(p,q)=\text{inf}\{L(\gamma):\gamma \text{ is a piecewise smooth curve from }p \text{ to }q\}\]
 \end{definition}
 
 \begin{claim}
@@ -89,17 +99,13 @@ Suppose $F:M \to N$ is a diffeomorphism
     If $M$ is closed in $\mathbb{R}^k$ then there is a length minimizing curve between any two points
 \end{claim}
 
-\begin{definition}
-    A diffeomorphism $F:M \to N$ is called a \textbf{Riemannian isometry} if at each point the derivative $DF_p$ is an isometry from $T_pM$ to $T_pN$
-\end{definition}
-
 \begin{claim}
     Every Riemannian isometry is an isometry with respect to the Riemannian metric
 \end{claim}
 
-\begin{definition}
-    A smooth map $F: M \to N$ is called a \textbf{local Riemannian isometry} at $p$ if there is a neighborhood $U$ such that $F(U)$ is open and $F_{|U}:U \to F(U)$ is a Riemannian isometry
-\end{definition}
+\begin{claim}
+    Suppose $F_1,F_2$ are local Riemannian isometries with $F_1(p)=F_2(p)$ and $(DF_1)_p=(DF_2)_p$. Then $F_1=F_2$ 
+\end{claim}
 
 \section{First fundamental form}
 
@@ -218,7 +224,55 @@ Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamm
     $I_{cv}=\frac{I_v}{c}$ and $\gamma_{cv}(t)=\gamma_v(ct)$
 \end{claim}
 
+\begin{definition}
+    We define $E_p =\{v \in T_pM:1 \in I_v\}$
+\end{definition}
+
+\begin{claim}
+    $E_p$ is star convex with respect to $0$
+\end{claim}
+
+\begin{claim}
+    $E_p$ is open in $T_pM$
+\end{claim}
+
+\begin{claim}
+    $I_v=\{t:tv \in E_p\}$
+\end{claim}
+
+\begin{definition}
+    We define $\exp_p \in C^\infty(E_p,M)$ by $v \to \gamma_v(1)$
+\end{definition}
+
+\begin{claim}
+    $(D\exp_p)_0=I$
+\end{claim}
+
+\begin{claim}
+    $\gamma_v(t)=\exp(tv)$
+\end{claim}
+
 \section{Tangent bundle}
+
+\begin{definition}
+    The \textbf{tangent bundle} $TM \subseteq \mathbb{R}^{2k}$ of $M$ is defined as $\{(p,v): p \in M,v \in T_pM\}$
+\end{definition}
+
+\begin{claim}
+    $TM$ is a manifold of dimension $2n$
+\end{claim}
+
+\begin{definition}
+    We define $E \subseteq T_pM$ as $\{(p,v): v \in E_p\}$
+\end{definition}
+
+\begin{claim}
+    $E$ is open in $TM$
+\end{claim}
+
+\begin{definition}
+    We define $\exp \in C^\infty(E,M)$ by $(p,v) \to \exp_p(v)$
+\end{definition}
 
 \section{Second fundamental form}
 
