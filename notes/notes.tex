@@ -13,7 +13,21 @@
 
 \maketitle
 
-\section{The derivative}
+\section{Preliminaries}
+
+\begin{definition}
+  A \textbf{submanifold} of $M$ is a subset $N \subseteq M$ that is a manifold
+\end{definition}
+
+\begin{definition}
+    The \textbf{tangent bundle} $TM \subseteq \mathbb{R}^{2k}$ of $M$ is defined as $\{(p,v): p \in M,v \in T_pM\}$
+\end{definition}
+
+\begin{claim}
+    $TM$ is a manifold of dimension $2n$
+\end{claim}
+
+\section{Notions associated with the derivative}
 
 \begin{definition}
     Define $grad \in L(C^\infty(M),\mathcal{X}(M))$ by $\langle v,\text{grad}_f(p) \rangle = Df_p(v)$ for all $v \in T_pM$
@@ -40,6 +54,8 @@
 \begin{claim}
     Suppose $\phi: \Omega \to V$ is a local parametrization. Then $D_{\phi_i}\phi_j=\frac{\partial \phi}{\partial x_i \partial x_j}$
 \end{claim}
+
+\section{Pullback by a diffeomorphism}
 
 Suppose $F:M \to N$ is a diffeomorphism
 
@@ -226,6 +242,12 @@ Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamm
     $I_{cv}=\frac{I_v}{c}$ and $\gamma_{cv}(t)=\gamma_v(ct)$
 \end{claim}
 
+\subsection{Relation with length minimizing cuves}
+
+\begin{claim}
+    If $\gamma$ is a geodesic then for each $t$ we have that $\gamma_{[a,b]}$ is length minimizing where $t \in [a,b]$
+\end{claim}
+
 \begin{claim}
     Suppose $\gamma$ is piecewise regular and length minimizing. Then $\gamma$ is smooth 
 \end{claim}
@@ -266,49 +288,10 @@ Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamm
 
 \begin{claim}
     $\gamma_v(t)=\exp(tv)$
-\end{claim}
-
-\section{Proper variations}
-
-  
-
-
-
-
-Suppose $\Gamma \in C^\infty(I \times J,M)$
+\end{claim} 
 
 \begin{definition}
-  The variation field $V \in \mathcal{X}(\Gamma_0)$ of $\Gamma$ is defined by $t \to \partial_1\Gamma(0,t)$
-\end{definition}
-
-\begin{claim}
-  We have $[\text{cov}(\partial_1\Gamma)_s](t)=[\text{cov}(\partial_2\Gamma)_t](s)$
-\end{claim}
-
-Suppose $\gamma:[a,b] \to M$ denotes a regular curve from $p$ to $q$
-
-\begin{definition}
-	A proper variation of $\gamma$ is a map $\Gamma \in 
-	C^{\infty}((-\epsilon,\epsilon) \times K,M)$ such that 
-	$\Gamma_{0}=\gamma$ and $\Gamma_{s}$ is a regular curve from $p$ to $q$
-\end{definition}
-
-\begin{claim}
-  Suppose $V \in \mathcal{X}(\gamma)$ with $V(a)=V(b)=0$. Then there is a proper variation $\Gamma$ of $\gamma$ whose variation field is $V$
-\end{claim}
-
-\section{Tangent bundle}
-
-\begin{definition}
-    The \textbf{tangent bundle} $TM \subseteq \mathbb{R}^{2k}$ of $M$ is defined as $\{(p,v): p \in M,v \in T_pM\}$
-\end{definition}
-
-\begin{claim}
-    $TM$ is a manifold of dimension $2n$
-\end{claim}
-
-\begin{definition}
-    We define $E \subseteq T_pM$ as $\{(p,v): v \in E_p\}$
+    We define $E \subseteq TM$ as $\{(p,v): v \in E_p\}$
 \end{definition}
 
 \begin{claim}
@@ -318,6 +301,52 @@ Suppose $\gamma:[a,b] \to M$ denotes a regular curve from $p$ to $q$
 \begin{definition}
     We define $\exp \in C^\infty(E,M)$ by $(p,v) \to \exp_p(v)$
 \end{definition}
+
+\section{Normal coordinate systems}
+
+\begin{definition}
+  A neighborhood $U \subseteq E_p$ of the origin is called \textbf{prenormal} if $\exp:U \to \exp(U)$ is a diffeomorphism.
+\end{definition}
+
+\begin{definition}
+  A \textbf{normal neighborhood} is the image under the exponential map of a star convex prenormal neighborhood
+\end{definition}
+
+\section{Injectivity radius}
+
+\begin{definition}
+  The \textbf{injectivity radius} is defined as \[\text{inj}_p=\text{sup }\{r > 0: B_r \text{ is prenormal}\}\]
+\end{definition}
+
+\begin{claim}
+  If $\rho=\text{inj}_p$, then $B_\rho$ is prenormal
+\end{claim}
+
+\section{One parameter family of curves}
+
+\begin{definition}
+We call $\Gamma \in C^\infty(I \times J,M)$ a \textbf{one parameter family of curves} on $J$
+\end{definition}
+
+\begin{definition}
+  The \textbf{variation field} $V \in \mathcal{X}(\Gamma_0)$ of $\Gamma$ is defined by $t \to \partial_1\Gamma(0,t)$
+\end{definition}
+
+\begin{claim}
+  We have $[\text{cov}(\partial_1\Gamma)_s](t)=[\text{cov}(\partial_2\Gamma)_t](s)$
+\end{claim}
+
+Suppose $\gamma:[a,b] \to M$ denotes a regular curve from $p$ to $q$
+
+\begin{definition}
+	A \textbf{proper variation} of $\gamma$ is a map $\Gamma \in 
+	C^{\infty}((-\epsilon,\epsilon) \times K,M)$ such that 
+	$\Gamma_{0}=\gamma$ and $\Gamma_{s}$ is a regular curve from $p$ to $q$
+\end{definition}
+
+\begin{claim}
+  Suppose $V \in \mathcal{X}(\gamma)$ with $V(a)=V(b)=0$. Then there is a proper variation $\Gamma$ of $\gamma$ whose variation field is $V$
+\end{claim}
 
 \section{Second fundamental form}
 
