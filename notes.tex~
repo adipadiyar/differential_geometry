@@ -269,13 +269,16 @@ Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamm
 \end{claim}
 
 \section{Proper variations}
+\begin{itemize}
+  \item $\gamma:[a,b] \to M$ denotes a regular curve from $p$ to $q$
+  \item $\Gamma \in C^\infty(I \times J,M)$
+\end{itemize}
 
-  
-
-
-
-
-Suppose $\Gamma \in C^\infty(I \times J,M)$
+\begin{definition}
+	A proper variation of $\gamma$ is a map $\Gamma \in 
+	C^{\infty}((-\epsilon,\epsilon) \times K,M)$ such that 
+	$\Gamma_{0}=\gamma$ and $\Gamma_{s}$ is a regular curve from $p$ to $q$
+\end{definition}
 
 \begin{definition}
   The variation field $V \in \mathcal{X}(\Gamma_0)$ of $\Gamma$ is defined by $t \to \partial_1\Gamma(0,t)$
@@ -284,14 +287,6 @@ Suppose $\Gamma \in C^\infty(I \times J,M)$
 \begin{claim}
   We have $[\text{cov}(\partial_1\Gamma)_s](t)=[\text{cov}(\partial_2\Gamma)_t](s)$
 \end{claim}
-
-Suppose $\gamma:[a,b] \to M$ denotes a regular curve from $p$ to $q$
-
-\begin{definition}
-	A proper variation of $\gamma$ is a map $\Gamma \in 
-	C^{\infty}((-\epsilon,\epsilon) \times K,M)$ such that 
-	$\Gamma_{0}=\gamma$ and $\Gamma_{s}$ is a regular curve from $p$ to $q$
-\end{definition}
 
 \begin{claim}
   Suppose $V \in \mathcal{X}(\gamma)$ with $V(a)=V(b)=0$. Then there is a proper variation $\Gamma$ of $\gamma$ whose variation field is $V$
