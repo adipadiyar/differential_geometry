@@ -1,7 +1,8 @@
 \documentclass{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{amsthm}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
 
 \title{Differential Geometry Assignment 2}
 \author{Aditya Padiyar}
@@ -10,5 +11,116 @@
 \begin{document}
 
 \maketitle
+
+\begin{definition}
+  The n-manifold $S^n(r)$ is defined as $\{v \in \mathbb{R}^{n+1}:||v||=r\}$
+\end{definition}
+
+\section{Vector fields and reparametrization}
+
+\begin{claim}
+Suppose $\gamma$ is a smooth curve on $[a,b]$, $V$ is a parallel vector field along $\gamma$ and $\phi:[c,d] \to [a,b]$ is a diffeomorphism.
+Then $V \circ \phi$ is a parallel vector field along $\gamma \circ \phi$
+\end{claim}
+
+\begin{proof}
+  We have $(V \circ \phi)'(t)=V'(\phi(t))\phi'(t)$. We also have $V'(\phi(t)) \in T_{\gamma(\phi(t))}M$ since $V$ is parallel to $\gamma$.
+\end{proof}
+
+\section{Tangential and normal frames}
+
+\begin{definition}
+  We define $\mathcal{Y}(M)=\{f \in C^\infty(M,\mathbb{R}^k):f(p) \in N_pM\}$ 
+\end{definition}
+
+\begin{definition}
+  A tangential frame on a neighborhood $V$ of $p$ consists of $X_i \in \mathcal{X}(V)$ such that 
+  $X_i(q)$ form an orthonormal basis of $T_pM$. A normal frame is defined similarly.
+\end{definition}
+
+\begin{claim}[Gram-Schmidt]
+  Suppose we have $\tilde{X}_i \in C^\infty(M,\mathbb{R}^k)$ such that $\tilde{X}_i(q)$ are linearly independent. 
+  Let $X'_1 = \tilde{X}_1$ and define $X_{k+1}'$ recursively by \[ X'_{k+1} = \tilde{X}_{k+1} - \sum_{i=1}^k \frac{ \langle X'_i, \tilde{X}_{k+1} \rangle } { \langle X'_i , X'_i \rangle } X'_i \]
+  Now define $X_i = \frac{X'_{i}}{||X'_i||}$. Then $X_i(q)$ are orthonormal and have the same span as $\tilde{X}_i(q)$
+\end{claim}
+
+\begin{claim}
+  There is a tangential frame on some neighborhood $V$
+\end{claim}
+
+\begin{proof}
+  Apply the Gram-Schmidt process to $\phi_i \in \mathcal{X}(V)$ obtained from a local parametrization $\phi \in C^\infty(\Omega,V)$
+\end{proof}
+
+\begin{claim}
+  There is a normal frame on some neighborhood $V$
+\end{claim}
+
+\begin{proof}
+  Define $Y_i \in \mathcal{Y}(M)$ by $Y_i(q)=\hat{\pi}_q(e_i)$ and \[V=\{q:Y_i(q) \text{ are linearly independent}\}\]
+  Use the determinant function to see that $V$ is open. Finally, apply Gram-Schmidt.
+\end{proof}
+
+\begin{claim}
+  Suppose $N_i \in \mathcal{Y}(V)$ are a normal frame on $V$. 
+   Then \[S_p(v,w)=-\sum_{i=1}^{k-n}\langle (D_vN_i)(p),w \rangle N_i(p)\]
+\end{claim}
+
+\begin{proof}
+  Get $\gamma \in C^\infty((-\epsilon,\epsilon),M)$ with $\gamma(0)=p$ and $\gamma'(0)=v$. 
+  We have \[\langle N_i(\gamma(t)), \pi_{\gamma(t)}w \rangle =0\]
+  Differentiating the map $t \to \pi_{\gamma(t)}w$ at $0$ we get $[(D\pi)_pv]w=S_p(v,w)$ 
+  and differentiating the map $t \to N_i(\gamma(t))$ at $0$ we get $(D_vN_i)(p)$. Now using 
+  the rule for differentiating inner products we get the desired result.
+\end{proof}
+
+\begin{claim}
+  For the manifold $S^n(r)$ we have $S_p(v,w)=-\frac{\langle v , w \rangle}{r^2}p$
+\end{claim}
+
+\begin{proof}
+  Define $\gamma(t)=r\frac{p+tv}{||p+tv||}$ and $N(p)=\frac{p}{r}$. Then $(N \circ \gamma)'(0)=\frac{v}{r}$. Now use the previous claim.
+\end{proof}
+
+\section{Local Riemannian isometry}
+
+Suppose $F \in C^\infty(M,N)$ is a local Riemannian isometry.
+
+\begin{itemize}
+  \item For $\gamma \in C^\infty(I,M)$ define $\tilde{\gamma} \in C^\infty(I,N)$ by $F \circ \gamma$
+  \item For $V$ in $\mathcal{X}(\gamma)$ define $\tilde{V} \in \mathcal{X}(\tilde{\gamma})$ by $t \to DF_{\gamma(t)}(V(t))$
+\end{itemize}
+
+\begin{claim}
+  We have $DF_{\gamma(t)}[\text{cov}V(t)]=\text{cov}\tilde{V}(t)$ for all $t \in I$
+\end{claim}
+
+\begin{proof}
+  Choose a local parametrization $\phi \in C^\infty(\Omega,V)$ for a neighborhood $V$ of $p=\gamma(t_0)$ 
+  such that $F_{|V} \in C^\infty(V,F(V))$ is a Riemannian isometry and $F(V)$ is open. Using formula (4.15) from Chapter 4 of [LeeRM] the left hand side becomes 
+  \[\dot{V}^j(F_*\phi_j)(\tilde{\gamma}(t))+V^j [DF_{\gamma(t)}(\nabla_{\gamma'(t)}\phi_j)]=\dot{V}^j(F_*\phi_j)(\tilde{\gamma}(t))+V^j[\nabla_{\tilde{\gamma}'(t)}(F_*\phi_j)] \]
+  We can expand the right hand side as 
+  \[\text{cov}[t \to V^j(F_*\phi_j)(\tilde{\gamma}(t))](t)\]
+  Applying (4.15) again we see that this is the LHS
+\end{proof}
+
+\begin{claim}
+If $\gamma$ is a geodesic then so is $\tilde{\gamma}$
+\end{claim}
+
+\begin{proof}
+  Substitute $V=\gamma'$ in the previous claim.
+\end{proof}
+
+\begin{claim}
+We have $DF_{\gamma(t_2)}P_{t_1t_2}^\gamma=P_{t_1t_2}^{\tilde{\gamma}}DF_{\gamma(t_1)}$
+\end{claim}
+
+\begin{proof}
+  Let $v \in T_{\gamma(t_1)}M$. Let $V \in \mathcal{X}(\gamma)$ be parallel to $\gamma$ with $V(t_1)=v$. 
+  Applying the left hand side to $v$ we get $\tilde{V}(t_2)$. 
+  We also have $\tilde{V}(t_1)=DF_{\gamma(t_1)}v$.
+  Hence applying $v$ to the RHS we also get $\tilde{V}(t_2)$
+\end{proof}
 
 \end{document}
