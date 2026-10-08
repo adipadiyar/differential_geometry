@@ -16,8 +16,20 @@
 \section{Preliminaries}
 
 \begin{definition}
-  A \textbf{submanifold} of $M$ is a subset $N \subseteq M$ that is a manifold
+  $N \subseteq M$ is a \textbf{submanifold} of $M$ if $N$ is a manifold.
 \end{definition}
+
+\begin{definition}
+  A local parametrization $\phi:\Omega \to U$ of $M$, with inverse $\psi$ is called compatible with $S$ if $\psi(S \cap U)=\Omega \cap (\mathbb{R}^m \times \{0\})$
+\end{definition}
+
+\begin{claim}
+  There is a local parametrization compatible with $S$
+\end{claim}
+
+\begin{claim}
+  Suppose $\phi$ is compatible with $S$. define $W=\{x:(x,0) \in \Omega\}$. then $\varphi:W \to S \cap U$ is a local parametrization of $S$ defined by $x \to \phi(x,0)$
+\end{claim}
 
 \begin{definition}
     The \textbf{tangent bundle} $TM \subseteq \mathbb{R}^{2k}$ of $M$ is defined as $\{(p,v): p \in M,v \in T_pM\}$
@@ -26,6 +38,15 @@
 \begin{claim}
     $TM$ is a manifold of dimension $2n$
 \end{claim}
+
+\begin{definition}
+  Suppose $\phi \in \text{Diffeo}(\Omega,U)$ is a local parametrization around $p$
+  \begin{itemize}
+    \item We define the radial map $r \in C^\infty(U)$ by $r(\phi(x))=||x||$
+    \item If $\phi(0)=p$ then we define $\phi_r: U \setminus \{p\} \to \mathbb{R}^k$ by $\phi(a) \to (D\phi)_a \left (\frac{a}{||a||} \right )$ 
+  \end{itemize}
+  
+\end{definition}
 
 \section{Notions associated with the derivative}
 
@@ -129,8 +150,12 @@ Suppose $M$ is connected
     The \textbf{first fundamental form} of $M$ at $p$ is defined by restricting the standard inner product on $\mathbb{R}^k$ to the tangent space. We have $g_p: T_pM \times T_pM \to \mathbb{R}$
 \end{definition}
 
+\begin{definition}
+For a local parametrization $\phi:\Omega \to V$ define \[G_ij(q)=g_q(\phi_i(q),\phi_j(q))\]
+\end{definition}
+
 \begin{claim}
-    Two manifolds $M$ and $N$ admit a local Riemannian isometry from $p$ to $q$ if and only if there are local parametrizations $\phi: \Omega \to U$ and $\varphi : \Omega \to V$ such that $g_{\phi(a)}(v_i,v_j)=h_{\varphi(a)}(w_i,w_j)$ for all $a \in \Omega$, where $v_i = \phi_i(\phi(a))$ and $w_i = \varphi_i(\varphi(a))$ 
+    Two manifolds $M$ and $N$ admit a local Riemannian isometry from $p$ to $q$ if and only if there are local parametrizations $\phi: \Omega \to U$ and $\varphi : \Omega \to V$ such that $G_{ij}(\phi(a))=H_{ij}(\varphi(a))$ for all $a \in \Omega$
 \end{claim}
 
 \section{Levi-Civita connection}
@@ -189,8 +214,6 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \begin{definition}
     We have  $\text{cov} \in L(\mathcal{X}(\gamma))$ given by $V \to (t \to \pi_{\gamma(t)}\dot{V}(t))$
 \end{definition}
-
-
 
 \begin{definition}
     A vector field $V$ along $\gamma$ is called \textbf{parallel} to $\gamma$ if $V \in \text{ker} (\text{cov}_\gamma)$
@@ -300,15 +323,62 @@ Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamm
     We define $\exp \in C^\infty(E,M)$ by $(p,v) \to \exp_p(v)$
 \end{definition}
 
+Suppose $F:M \to N$ is a local Riemannian isometry at $p$
+
+\begin{claim}
+  For all $v$ in $T_pM$ we have $F_*(v) \in \mathcal{E}_{F(p)}$
+\end{claim}
+
+\begin{claim}
+  We have $\exp_{F(p)}(F_*(v))=F(\exp_p(v))$
+\end{claim}
+
 \section{Normal coordinate systems}
 
 \begin{definition}
-  A neighborhood $U \subseteq E_p$ of the origin is called \textbf{prenormal} if $\exp:U \to \exp(U)$ is a diffeomorphism.
+  A neighborhood $U \subseteq E_p$ of the origin is called \textbf{prenormal} if $\exp_p:U \to \exp(U)$ is a diffeomorphism.
 \end{definition}
 
 \begin{definition}
-  A \textbf{normal neighborhood} is the image under the exponential map of a star convex prenormal neighborhood
+  A \textbf{normal neighborhood} is the image under $\exp_p$ of a star convex prenormal neighborhood
 \end{definition}
+
+\begin{definition}
+  Suppose $v_1,v_2,\dots,v_n$ is an orthonormal basis of $T_pM$ and $U$ is a normal neighborhood of $p$ with corresponding prenormal neighborhood $V$. 
+  Define $\Omega=\{x \in \mathbb{R}^n : \sum_{i=1}^n x_iv_i \in V\}$ and $\phi \in \text{Diffeo}(\Omega,U)$ by $\phi(x)=\exp_p(\sum x_iv_i)$
+  Then $\phi$ is called a \textbf{normal coordinate system} centered at $p$
+\end{definition}
+
+\begin{claim}
+  If $\phi$ is a normal coordinate system on $U$ then $\phi_i(p)$ is an orthonormal basis of $T_pM$
+\end{claim}
+
+\begin{claim}
+  If $\phi \in \text{Diffeo}(\Omega_1,U)$ and $\psi \in \text{Diffeo}(\Omega_2,U)$ are normal coordinate systems then there is $A \in O_n$ such that 
+  \begin{itemize}
+    \item $\Omega_2=A(\Omega_1)$
+    \item $\psi \circ A \circ \phi^{-1}=\text{id}_U$
+  \end{itemize}
+  
+\end{claim}
+
+\begin{claim}
+  Suppose $\phi \in \text{Diffeo}(\Omega,U)$ is a normal coordinate system centered at $p$ with $\phi_i(p)=v_i$. Then the following hold:
+  \begin{itemize}
+    \item $\Gamma_{ij}^k(0)=0$
+    \item $G_{ij}(p)=\delta_{ij}$
+    \item Whenever $tx \in \Omega$ we have $\gamma_v(t)=\phi(tx)$ where $v=\sum x_iv_i$
+    \item $(DG_{ij})_p(D\phi)_0=0$
+    \item For $q =\exp_p(v) \in U$ we have 
+      \begin{itemize}
+        \item $r(q)=||v||$
+        \item $||v||\phi_r(q)=\gamma_v'(1)$
+        \item $||\phi_r(q)||=1$
+      \end{itemize}
+    \item $\text{grad }r=\phi_r$
+  \end{itemize}
+\end{claim}
+
 
 \section{Injectivity radius}
 
@@ -318,6 +388,38 @@ Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamm
 
 \begin{claim}
   If $\rho=\text{inj}_p$, then $B_\rho$ is prenormal
+\end{claim}
+
+\begin{claim}
+  Suppose $0<\epsilon<\rho$. Then $\Sigma_\epsilon=\exp_p(\delta B_\epsilon)$ is a submanifold of $M$
+\end{claim}
+
+\begin{claim}
+  Suppose $\phi \in \text{Diffeo}(\Omega,U)$ is a normal coordinate system centered at $p$. Let $q =\exp_p(v) \in U$ with $\epsilon= ||v||< \rho$. Then $\phi_r(q) \in T_q\Sigma_\epsilon$  
+\end{claim}
+
+\begin{claim}
+  Suppose $q=\exp_p(v)$ where $||v||<\rho$. Consider the curve $\gamma:[0,1] \to M$ given by $\gamma(t)=\exp_p(tv)$. Then we have the following:
+  \begin{itemize}
+    \item $\gamma$ is minimizing
+    \item Any other minimizing curve from $p$ to $q$ is a reparametrization of $\gamma$
+  \end{itemize}
+\end{claim}
+
+\begin{definition}
+  A neighborhood $V$ of $p$ is $\delta$- uniformly normal if for all $q \in V$ we have
+  \begin{itemize}
+    \item $\delta < \text{inj}_q$
+    \item $V \subseteq \exp_q(B_\delta)$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  A neighborhood is uniformly normal if it is $\delta$-uniformly normal for some $\delta$
+\end{definition}
+
+\begin{claim}
+  There is a uniformly normal neighborhood around every point
 \end{claim}
 
 \section{One parameter family of curves}

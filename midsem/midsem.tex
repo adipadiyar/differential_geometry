@@ -1,0 +1,174 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+
+\newtheorem{definition}{Definition}
+\newtheorem{claim}{Claim}
+
+\title{Differential Geometry: midsem exam}
+\author{Aditya Padiyar}
+\date{September 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+  A submanifold $S$ is called totally geodesic if for every $p \in S$ and $v \in T_pS$ we have $\text{range } \gamma_v \subseteq S$
+\end{definition}
+
+\begin{definition}
+  We say that $X \in \mathcal{X}(M)$ is compatible with $S$ if $X_{|S} \in \mathcal{X}(S)$. This space is $\mathcal{X}_S(M)$
+\end{definition}
+
+\begin{claim}
+  If $X,Y \in \mathcal{X}_S(M)$ then $[X,Y]_{|S}=[X_{|S},Y_{|S}]_S$
+\end{claim}
+
+\section{Second fundamental form}
+
+Fix a submanifold $S$. Let $\nabla$ and $\tilde{\nabla}$ denote the Levi-Civita connections on $M$ and $S$ respectively.
+
+\begin{definition}
+  Define $\mathcal{F} \in B(\mathcal{X}_{S}(M),C^\infty(S,\mathbb{R}^k))$ by \[X,Y  \to (\nabla_XY)-\tilde{\nabla}_XY\]
+\end{definition}
+
+\begin{claim}
+  $\text{range }\mathcal{F} \subseteq \mathcal{Y}(S)$
+\end{claim}
+
+\begin{proof}
+  Observe that $[\tilde{\nabla}_XY](q)=\tilde{\pi}([\nabla_XY](q))$
+\end{proof}
+
+\begin{claim}
+  $\mathcal{F}$ is symmetric
+\end{claim}
+
+\begin{claim}
+  $\mathcal{F}(fX,Y)=f\mathcal{F}(X,Y)$ for any $f \in C^\infty(M)$
+\end{claim}
+
+\begin{claim}
+  If $X(p)=0$ then $\mathcal{F}(X,Y)(p)=0$
+\end{claim}
+
+\begin{proof}
+  Choose a tangential frame $X_i \in \mathcal{X}(U)$ on some neighborhood $U$. We have $X=\sum f_iX_i$ with $f_i(p)=0$. Now use the bilinearity with respect to smooth functions.
+\end{proof}
+
+\begin{claim}
+  Suppose $v \in T_pS$. Then there is a neighborhood $U$ of $p$ and $X \in \mathcal{X}_{S \cap U}(U)$ such that $X(p)=v$
+\end{claim}
+
+\begin{proof} 
+  Let $\phi:\Omega \to U$ be a local parametrization compatible with $S$, with inverse $\psi$. 
+  Let $\varphi:W \to S \cap U$ is the associated local parametrization of $S$. 
+  Now $v=(D\varphi)_0y$. Define $X: U \to \mathbb{R}^k$ by $X(q)=(D\psi)_q^{-1}(y,0)$
+\end{proof}
+
+\begin{claim}
+  Suppose $v_1,v_2 \in T_pS$ and $X_i,Y_i \in \mathcal{X}_S(M)$ are such that \[X_i(p)=Y_i(p)=v_i\]
+  Then $\mathcal{F}(X_1,X_2)(p)=\mathcal{F}(Y_1,Y_2)(p)$
+\end{claim}
+
+\begin{proof}
+  We have $\mathcal{F}(X_1,X_2)-\mathcal{F}(Y_1,Y_2)=\mathcal{F}(X_1-Y_1,X_2)-\mathcal{F}(Y_1,X_2-Y_2)$. But $X_1-Y_1$ and $X_2-Y_2$ vanish at $p$
+\end{proof}
+
+\begin{definition}
+  We have $Q_p \in B(T_pS,N_pS)$ defined by $(v,w) \to \mathcal{F}(X,Y)(p)$
+\end{definition}
+
+\begin{claim}
+  $Q_p$ is symmetric
+\end{claim}
+
+\begin{claim}
+  Suppose $\gamma$ is a smooth curve in $S$ defined on an interval $I$ and $V$ is a smooth vector field along $\gamma$ satisfying $V(t) \in T_{\gamma(t)}S$.
+  Then we have \[(\text{cov }V)(t)=(\widetilde{\text{cov }}V)(t)+Q_{\gamma(t)}(\gamma'(t),V(t))\]
+  where $\text{cov}$ and $\widetilde{\text{cov}}$ denote the covariant derivatives along $\gamma$ in $M$ and $S$ respectively. 
+\end{claim}
+
+\begin{proof}
+  Consider the following
+  \begin{itemize}
+    \item Choose $t_0$ and a compatible local parametrization $\phi:\Omega \to U$
+    \item The associated local parametrization of $S$ is $\varphi:W \to S \cap U$
+    \item Let $\gamma(t_0)=p$ and $T:\mathbb{R}^k \to N_pS$ be the orthogonal projection
+    \item $V(t)=V_i(t)\varphi_i(\gamma(t))$ and $\gamma(t)=\varphi(x(t))$
+    \item $Q_p(\gamma'(t_0),V(t_0)) = \dot{x_i}(t_0)V_j(t_0)Q_p(\varphi_i(p),\varphi_j(p))$
+    \item $\dot{V}(t_0)=\dot{x_i}(t_0)V_j(t_0)(D_{\varphi_i}\varphi_j)(p)+\dot{V_j}(t_0)\varphi_j(p)$
+    \item $(\text{cov}-\widetilde{\text{cov}})V(t_0)=T(\dot{V}(t_0))=\dot{x_i}(t_0)V_j(t_0)T(D_{\varphi_i}\varphi_j)(p)$ 
+    \item Now use the definition of $Q_p$. The required vector field extensions are $\phi_i$ and $\phi_j$ respectively
+  \end{itemize}
+\end{proof}
+
+\begin{claim}
+  If $S$ is totally geodesic then $Q_p=0$ for all $p \in S$
+\end{claim}
+
+\section{Fixed points}
+
+Suppose $\mathcal{A} \subseteq \text{Iso}(M)$, where $\text{Iso}(M)$ denotes the group of Riemannian isometries on $M$.
+Define \[C=\{q \in M: q \text{ is a fixed point of every }A \in \mathcal{A}\}\]
+
+\begin{claim}
+  $C$ is closed in $M$
+\end{claim}
+
+\begin{claim}
+  $C$ is a submanifold of $M$
+\end{claim}
+
+For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the fixed points of $DF_q$ 
+
+\begin{claim}
+  Suppose $q \in C$ and $v \in \mathcal{E}_q \cap W_q$. Then $\exp_q(v) \in C$
+\end{claim}
+
+\begin{claim}
+  Every connected component of $C$ is a submanifold of $M$
+\end{claim}
+
+\begin{claim}
+  We have $T_qC=W_q$
+\end{claim}
+
+Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sigma: \mathbb{R} \to C$ is a diffeomorphism
+
+\begin{claim}
+  We have $(\text{cov }\sigma')(t) \in W_{\sigma(s)}$ where the covariant derivative is in $M$
+\end{claim}
+
+\begin{claim}
+  If $|\sigma'(t)|=1$ then $\sigma$ is a geodesic.
+\end{claim}
+
+\section{Uniformly normal neighborhood}
+
+Suppose $W$ is a uniformly normal neighborhood.
+
+\begin{claim}
+  Suppose $v_i \in T_pM$ are unit vectors and $q_i=\exp_p(c_iv_i)$ are distinct points in $W$ for $i=1,2,\dots,n$.
+  Define $f:W \to [0,\infty)$ by $f(x)= \sum_{i=1}^n d_M(q_i,x)$ and suppose $f$ attains its minimum at $p$.
+  Then we have $\sum_{i=1}^n v_i=0$
+\end{claim}
+
+\section{Removal of a point}
+
+Suppose $M$ is connected and $p \in M$. Define $N = M \setminus \{p\}$
+
+\begin{claim}
+  $N$ is a connected submanifold
+\end{claim}
+
+\begin{claim}
+  For all $q_1,q_2 \in N$ we have $d_N(q_1,q_2)=d_M(q_1,q_2)$
+\end{claim}
+
+
+
+\end{document}
