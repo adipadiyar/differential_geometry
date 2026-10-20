@@ -40,12 +40,19 @@
 \end{claim}
 
 \begin{definition}
+  The unit tangent bundle $UTM \subset TM$ is defined as $\{(q,v):||v||=1\}$
+\end{definition}
+
+\begin{claim}
+  $UTM$ is a submanifold of $TM$
+\end{claim}
+
+\begin{definition}
   Suppose $\phi \in \text{Diffeo}(\Omega,U)$ is a local parametrization around $p$
   \begin{itemize}
     \item We define the radial map $r \in C^\infty(U)$ by $r(\phi(x))=||x||$
     \item If $\phi(0)=p$ then we define $\phi_r: U \setminus \{p\} \to \mathbb{R}^k$ by $\phi(a) \to (D\phi)_a \left (\frac{a}{||a||} \right )$ 
   \end{itemize}
-  
 \end{definition}
 
 \section{Notions associated with the derivative}
@@ -55,7 +62,7 @@
 \end{definition}
 
 \begin{definition}
-    Define $Hess_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_vX_f,w\rangle)\]
+    Define $Hess_p \in L(C^\infty(M),T_pM^{(2)})$ by \[f \to ((v,w) \to \langle \nabla_v\text{grad}_f,w\rangle)\]
 \end{definition}
 
 \begin{claim}
@@ -206,7 +213,7 @@ Suppose $F:M \to N$ is a Riemannian isometry
 \section{Vector fields along a curve}
 
 \begin{definition}
-    Suppose $\gamma: I \to M$ is a smooth curve. A smooth vector field along $\gamma$ is a map $V: I \to \mathbb{R}^k$ such that $V(t) \in T_{\gamma (t)}M$
+    Suppose $\gamma: I \to M$ is a smooth curve. A smooth vector field along $\gamma$ is a smooth map $V: I \to \mathbb{R}^k$ such that $V(t) \in T_{\gamma (t)}M$
 \end{definition}
 
 The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
@@ -244,6 +251,10 @@ The vector space of smooth vector fields along $\gamma$ is $\mathcal{X}(\gamma)$
 \begin{definition}
     A smooth curve $\gamma$ is a \textbf{geodesic} if $\gamma'$ is parallel to $\gamma$
 \end{definition}
+
+\begin{claim}
+  If $\gamma$ is a geodesic then $||\gamma'(t_1)||=||\gamma'(t_2)||$ for all $t_1,t_2$
+\end{claim}
 
 Suppose $p \in M$ and $v \in T_pM$. Consider geodesics $\gamma$ such that $\gamma(0)=p$ and $\gamma'(0)=v$
 

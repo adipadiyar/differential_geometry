@@ -110,51 +110,112 @@ Fix a submanifold $S$. Let $\nabla$ and $\tilde{\nabla}$ denote the Levi-Civita 
   If $S$ is totally geodesic then $Q_p=0$ for all $p \in S$
 \end{claim}
 
+\begin{proof}
+  Let $v \in T_pS$. 
+  Applying the previous claim to $\gamma_v$ we get \[\widetilde{\text{cov}}\gamma'(0)+Q_p(v,v)=0\]
+  Since the first term is in $T_pS$ and the second term is in $N_pS$ we get that $Q_p(v,v)=0$.
+  Since $Q_p$ is symmetric it must be zero.
+\end{proof}
+
 \section{Fixed points}
 
 Suppose $\mathcal{A} \subseteq \text{Iso}(M)$, where $\text{Iso}(M)$ denotes the group of Riemannian isometries on $M$.
 Define \[C=\{q \in M: q \text{ is a fixed point of every }A \in \mathcal{A}\}\]
+For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fixed by each $DA_q$, for $A \in \mathcal{A}$ 
 
 \begin{claim}
   $C$ is closed in $M$
 \end{claim}
 
 \begin{claim}
-  $C$ is a submanifold of $M$
-\end{claim}
-
-For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the fixed points of $DF_q$ 
-
-\begin{claim}
   Suppose $q \in C$ and $v \in \mathcal{E}_q \cap W_q$. Then $\exp_q(v) \in C$
 \end{claim}
 
+\begin{proof}
+  Use the property in the notes.
+\end{proof}
+
 \begin{claim}
-  Every connected component of $C$ is a submanifold of $M$
+  Let $q \in C$ and $U=\exp_q(B_\rho)$, where $\rho$ is the injectivity radius. Then $C \cap U = \exp_q(W_q \cap B_\rho)$
 \end{claim}
+
+\begin{claim}
+  $C$ is a submanifold of $M$
+\end{claim}
+
+\begin{proof}
+  Since $\exp_q:B_\rho \to U$ is a diffeomorphism $C \cap U$ is a submanifold.
+\end{proof}
+
+\begin{claim}
+  Every connected component of a manifold is a submanifold
+\end{claim}
+
+\begin{proof}
+  Every manifold is locally path connected. Now use Theorem 25.4 of Munkres.
+\end{proof}
 
 \begin{claim}
   We have $T_qC=W_q$
 \end{claim}
 
+\begin{proof}
+  Use an earlier claim
+\end{proof}
+
+\begin{claim}
+  $C$ is totally geodesic
+\end{claim}
+
+\begin{proof}
+  Use an earlier claim
+\end{proof}
+
 Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sigma: \mathbb{R} \to C$ is a diffeomorphism
 
 \begin{claim}
-  We have $(\text{cov }\sigma')(t) \in W_{\sigma(s)}$ where the covariant derivative is in $M$
+  We have $(\text{cov }\sigma')(t) \in W_{\sigma(t)}$ where the covariant derivative is in $M$
 \end{claim}
 
+\begin{proof}
+  Use an earlier claim
+\end{proof}
+
 \begin{claim}
-  If $|\sigma'(t)|=1$ then $\sigma$ is a geodesic.
+  If $|\sigma'(t)|=1$ then $\sigma$ is a geodesic in $M$
 \end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Differentiating, we get $\langle \sigma''(t), \sigma'(t) \rangle=0$ 
+    \item Hence $\langle (\text{cov}\sigma')(t), \sigma'(t) \rangle=0$
+    \item But $(\text{cov}\sigma')(t) = f(t)\sigma'(t)$
+    \item Hence $f=0$
+  \end{itemize}
+
+\end{proof}
 
 \section{Uniformly normal neighborhood}
 
-Suppose $W$ is a uniformly normal neighborhood.
+Suppose we have that
+
+\begin{itemize}
+  \item $W$ is a uniformly normal neighborhood of $p$
+  \item $q_0=\exp_p(cv_0) \in W$
+  \item $0<c<\rho$
+  \item $v_0 \in T_pM$ is a unit vector
+  \item $\rho$ is the injectivity radius at $p$
+\end{itemize}
+
+Define $f:W \to [0,\infty)$ by $f(q)= d_M(q_0,q)$
 
 \begin{claim}
-  Suppose $v_i \in T_pM$ are unit vectors and $q_i=\exp_p(c_iv_i)$ are distinct points in $W$ for $i=1,2,\dots,n$.
-  Define $f:W \to [0,\infty)$ by $f(x)= \sum_{i=1}^n d_M(q_i,x)$ and suppose $f$ attains its minimum at $p$.
-  Then we have $\sum_{i=1}^n v_i=0$
+  $f$ is smooth on some neighborhood of $p$ 
+\end{claim}
+
+\begin{claim}
+  $\text{grad}_f(p)=-v_0$
 \end{claim}
 
 \section{Removal of a point}

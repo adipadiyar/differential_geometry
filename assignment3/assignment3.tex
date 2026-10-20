@@ -1,0 +1,202 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+\title{Differential Geometry: Assignment 3}
+\author{Aditya Padiyar}
+\date{October 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}
+  We call $S \subseteq M$ geodesically convex if for each $p,q \in S$ the following holds:
+  \begin{itemize}
+    \item There is a geodesic $\gamma:[0,1] \to S$ of $M$ from $p$ to $q$, which is minimizing.
+    \item If $\widetilde{\gamma}:[0,1] \to M$ is a minimizing geodesic of $M$ from $p$ to $q$, then $\widetilde{\gamma}=\gamma$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}
+  A loop in $M$ is a piecewise smooth curve $\gamma:[a,b] \to M$ such that $\gamma(a)=\gamma(b)$
+\end{definition}
+
+\begin{definition}
+  $M$ has trivial holonomy at $p$ if all loops based at $p$ have identity parallel transport
+\end{definition}
+
+\begin{definition}
+  $M$ has locally trivial holonomy at $p$ if there is a neighborhood $V$ such that $V$ has trivial holonomy at $p$
+\end{definition}
+
+\begin{claim}
+  If $v,w \in T_pM$ then \[\text{lim}_{t \to 0}\frac{d_M(\exp_p(tv),\exp_p(tw))}{|t|}=||v-w||\]
+\end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Let $\gamma_t:[0,1] \to M$ be the minimizing geodesic from $q_1(t)=\exp_p(tv)$ to $q_2(t)=\exp_p(tw)$, for $t \in (-\epsilon,\epsilon)$
+    \item We have \[\gamma(s,t)=\exp(q_1(t),s \widetilde{\gamma}(t))\] where $\widetilde{\gamma(t)} \in T_{q_1(t)}M$ is the vector of smallest norm such that \[\exp(q_1(t),\widetilde{\gamma}(t))=q_2(t)\]
+    \item The map $(s,t) \to \gamma(s,t)$ is smooth by the inverse function theorem
+    \item Let $E(t)=\langle \partial_1 \gamma(0,t) , \partial_1 \gamma(0,t) \rangle $
+    \item Then \[E''(t)=2 [ \langle \partial_1 \partial_2     \gamma(0,t),  \partial_1 \partial_2 \gamma(0,t) \rangle + 
+                            \langle \partial_1 (\partial_2)^2 \gamma(0,t) , \partial_1 \gamma(0,t)            \rangle ] \]
+    \item Now \[(\partial_1^2 \partial_2 \gamma)(s,0)=(D_s)^2 (\partial_2 \gamma)(s,0)=(D_s D_t \partial_1 \gamma)(s,0)\]
+          which equals \[(R(\partial_1 \gamma,\partial_2 \gamma) \partial_1 \gamma)(s,0)=0\]
+    \item Hence $\partial_2 \gamma (s,0)= sv+(1-s)w$
+  \end{itemize}
+\end{proof}
+
+\section{Small geodesic balls are geodesically convex}
+
+Consider the following:
+
+\begin{itemize}
+  \item Suppose $\exp_p(B_\epsilon) \subseteq W$, where $W$ is a uniformly $\delta$ normal neighborhood of $p$ and $\epsilon < \delta$
+  \item Define $g:M \to \mathbb{R}$ by $g(q)=[d_M(q,p)]^2$
+  \item Define $h:UTB(\frac{\epsilon}{2},p) \times (-\frac{\epsilon}{2},\frac{\epsilon}{2}) \to M$ by $(q,v,t) \to \exp_q(tv)$
+  \item Let $K=[\frac{-\epsilon}{4},\frac{\epsilon}{4}]$
+  \item Define $f=g \circ h$
+  \item Let $U_0=\{(q,v) \in UTB(\frac{\epsilon}{2},p) :f''(q,v,t)>0 \text{ for all }t \in K\}$
+  \item Let $U=\{q \in B(\frac{\epsilon}{2},p): (q,v) \in U_0 \text{ for all } v \in T_qM \text{ with } ||v||=1 \}$
+\end{itemize}
+
+\begin{claim}
+  $\text{range }h \subseteq W$
+\end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Let $q_0=h(q,v,t)$
+    \item $d_M(q_0,q)=|t|<\frac{\epsilon}{2}$
+    \item $d_M(q_0,p) \leq d_M(q_0,q) + d_M(p,q) < \epsilon$
+    \item But we have that $B(\epsilon,p) \subseteq W$
+  \end{itemize}
+\end{proof}
+
+\begin{claim}
+  $g$ is smooth on $B(\epsilon,p)$
+\end{claim}
+
+\begin{proof}
+  This follows since $g(\exp_p(v))=||v||^2$ and $\exp_p$ is a diffeomorphism from $B_\epsilon$ to $B(\epsilon,p)$
+\end{proof}
+
+\begin{claim}
+  $f(p,v,t)=t^2$
+\end{claim}
+
+\begin{claim}
+  We have $f''(a)=\text{Hess}_{h(a)}(g)(h'(a),h'(a))$
+\end{claim}
+
+\begin{claim}
+  $\text{Hess}_q(g)$ is positive definite for $q \in U$
+\end{claim}
+
+\begin{claim}
+  $U$ is open.
+\end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item $U_0$ is open by tube lemma
+    \item Choose an orthonormal frame on some neighborhood $V_0$ of $p$. We have the diffeomorphism $\Psi:V_0 \times S^{n-1} \to UTV_0$. 
+    \item By tube lemma $U=\{q:(q,v) \in \Psi^{-1}(U_0) \text{ for all }v\}$ is open
+  \end{itemize}
+\end{proof}
+
+\begin{claim}
+    Suppose $q_1,q_2 \in U$ and $\gamma:[0,1] \to U$ is a minimizing geodesic segment from $q_1$ to $q_2$. 
+    Then $g \circ \gamma$ is convex
+\end{claim}
+
+\begin{proof}
+  We have $(g \circ \gamma)''(t)=\text{Hess}_{\gamma(t)}(g)(\gamma'(t),\gamma'(t))>0$
+\end{proof}
+
+\begin{claim}
+  $V=B(p,\frac{r}{3})$ is geodesically convex, where $B(p,r) \subseteq U$ for some $\delta$
+\end{claim}
+
+\begin{proof}
+  Suppose $q_1,q_2 \in V$ and $\gamma:[0,1] \to M$ is a minimizing geodesic in $M$ from $q_1$ to $q_2$. Then we have:
+  
+  \begin{itemize}
+    \item $d_M(q_1,\gamma(t))=td_M(q_1,q_2)<\frac{2r}{3}$
+    \item $d_M(p,\gamma(t)) \leq d_M(p,q_1) + d_M(q_1,\gamma(t)) < r $
+    \item by a previous claim $g \circ \gamma$ is convex
+    \item so $d_M(p,\gamma(t)) \leq \text{max}\{d_M(p,q_1),d_M(p,q_2)\}<\frac{r}{3}$
+  \end{itemize}
+
+\end{proof}
+
+\section{Riemannian isometries}
+
+Suppose $f:M \to N$ is a surjective metric isometry with respect to the intrinsic metric.
+Let $q=f(p)$
+
+\begin{claim}
+  There is an open ball $B \subseteq \mathcal{E}_p$ in $T_pM$ centered at the origin and a map $\Psi:B \to \mathcal{E}_q$ such that 
+  \begin{itemize}
+    \item $f(\exp_p(v))=\exp_q(\Psi(v))$ for all $v \in B$
+    \item $\Psi(0)=0$
+    \item $\Psi$ is a metric isometry
+    \item there is a linear isometry $A:T_pM \to T_qM$ such that $Av=\Psi(v)$ for all $v \in B$
+  \end{itemize}
+\end{claim}
+
+\begin{proof}
+ We have $d(f(\exp_p(v)),q)=d(exp_q(\Psi(v)),q)=d(\exp_p(v),p)$. Hence $||\Psi(v)||=||v||$
+\end{proof}
+
+\begin{claim}
+  There is a neighborhood $V$ of $p$ such that $f_{|V}$ is smooth
+\end{claim}
+
+\begin{claim}
+  We have $(Df)_p=A$
+\end{claim}
+
+\begin{claim}
+  $f$ is a Riemannian isometry
+\end{claim}
+
+\section{Flat manifolds}
+
+\begin{claim}
+  The following are equivalent
+  \begin{enumerate}
+    \item If $\gamma_0,\gamma_1:[0,1] \to M$ are smooth curves from $p$ to $q$ that are path homotopic then they have the same parallel transport
+    \item The restricted holonomy group $\text{Hol}_0(p)$ is trivial for all $p$
+    \item $M$ has locally trivial holonomy at every point
+    \item $R=0$ 
+  \end{enumerate}
+\end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Suppose (1) holds.
+          Since the constant loop has identity parallel transport, (2) also holds
+    
+    \item Suppose (2) holds and let $V$ be a simply connected neighborhood of $p$. 
+          Let $\gamma$ be a loop based at $p$ in $V$. 
+          Since $\gamma$ is path homotopic to the constant loop, it has identity parallel transport.
+          Hence (3) holds.
+          
+    \item Suppose (3) holds, so that there is a neighborhood $V$ such that $V$ has trivial holonomy at $p$.
+          Let $u,v,w \in T_pM$ and define $\Gamma(s,t)=\exp_p(su+tv)$. 
+          Applying Theorem 7.11 of Lee, we get $R_p=0$. Hence (4) holds.
+  \end{itemize}  
+\end{proof}
+\end{document}
