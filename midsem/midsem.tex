@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{hyperref}
 
 \newtheorem{definition}{Definition}
 \newtheorem{claim}{Claim}
@@ -86,7 +87,7 @@ Fix a submanifold $S$. Let $\nabla$ and $\tilde{\nabla}$ denote the Levi-Civita 
   $Q_p$ is symmetric
 \end{claim}
 
-\begin{claim}
+\begin{claim}\label{relatingCov}
   Suppose $\gamma$ is a smooth curve in $S$ defined on an interval $I$ and $V$ is a smooth vector field along $\gamma$ satisfying $V(t) \in T_{\gamma(t)}S$.
   Then we have \[(\text{cov }V)(t)=(\widetilde{\text{cov }}V)(t)+Q_{\gamma(t)}(\gamma'(t),V(t))\]
   where $\text{cov}$ and $\widetilde{\text{cov}}$ denote the covariant derivatives along $\gamma$ in $M$ and $S$ respectively. 
@@ -132,12 +133,16 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
 \end{claim}
 
 \begin{proof}
-  Use the property in the notes.
+  We have $A\exp_q(v)=\exp_q(DA_qv)=\exp_q(v)$
 \end{proof}
 
-\begin{claim}
+\begin{claim}\label{CWrelation}
   Let $q \in C$ and $U=\exp_q(B_\rho)$, where $\rho$ is the injectivity radius. Then $C \cap U = \exp_q(W_q \cap B_\rho)$
 \end{claim}
+
+\begin{proof}
+  The proof is similar to the previous one
+\end{proof}
 
 \begin{claim}
   $C$ is a submanifold of $M$
@@ -155,12 +160,12 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
   Every manifold is locally path connected. Now use Theorem 25.4 of Munkres.
 \end{proof}
 
-\begin{claim}
+\begin{claim}\label{CtangentSpace}
   We have $T_qC=W_q$
 \end{claim}
 
 \begin{proof}
-  Use an earlier claim
+  Use \ref{CWrelation}
 \end{proof}
 
 \begin{claim}
@@ -168,7 +173,7 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
 \end{claim}
 
 \begin{proof}
-  Use an earlier claim
+  Use \ref{CtangentSpace}
 \end{proof}
 
 Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sigma: \mathbb{R} \to C$ is a diffeomorphism
@@ -178,7 +183,7 @@ Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sig
 \end{claim}
 
 \begin{proof}
-  Use an earlier claim
+  By \ref{relatingCov} we may take the covariant derivative in $C$. Now use \ref{CtangentSpace}
 \end{proof}
 
 \begin{claim}
@@ -203,19 +208,19 @@ Suppose we have that
 \begin{itemize}
   \item $W$ is a uniformly normal neighborhood of $p$
   \item $q_0=\exp_p(cv_0) \in W$
+  \item $\rho$ is the injectivity radius at $p$
   \item $0<c<\rho$
   \item $v_0 \in T_pM$ is a unit vector
-  \item $\rho$ is the injectivity radius at $p$
 \end{itemize}
 
-Define $f:W \to [0,\infty)$ by $f(q)= d_M(q_0,q)$
+Define $f:W \to [0,\infty)$ by $f(q)= [d_M(q_0,q)]^2$
 
 \begin{claim}
-  $f$ is smooth on some neighborhood of $p$ 
+  $f$ is smooth 
 \end{claim}
 
 \begin{claim}
-  $\text{grad}_f(p)=-v_0$
+  $\text{grad}_f(p)=-2cv_0$
 \end{claim}
 
 \section{Removal of a point}
@@ -229,7 +234,5 @@ Suppose $M$ is connected and $p \in M$. Define $N = M \setminus \{p\}$
 \begin{claim}
   For all $q_1,q_2 \in N$ we have $d_N(q_1,q_2)=d_M(q_1,q_2)$
 \end{claim}
-
-
 
 \end{document}
