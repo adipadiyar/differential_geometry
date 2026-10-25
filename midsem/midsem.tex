@@ -107,7 +107,7 @@ Fix a submanifold $S$. Let $\nabla$ and $\tilde{\nabla}$ denote the Levi-Civita 
   \end{itemize}
 \end{proof}
 
-\begin{claim}
+\begin{claim}\label{nullQ}
   If $S$ is totally geodesic then $Q_p=0$ for all $p \in S$
 \end{claim}
 
@@ -128,12 +128,12 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
   $C$ is closed in $M$
 \end{claim}
 
-\begin{claim}
+\begin{claim}\label{WtoC}
   Suppose $q \in C$ and $v \in \mathcal{E}_q \cap W_q$. Then $\exp_q(v) \in C$
 \end{claim}
 
 \begin{proof}
-  We have $A\exp_q(v)=\exp_q(DA_qv)=\exp_q(v)$
+  Let $A \in \mathcal{A}$. We have $A\exp_q(v)=\exp_q(DA_qv)=\exp_q(v)$, where the last equality holds because $v \in W_q$.
 \end{proof}
 
 \begin{claim}\label{CWrelation}
@@ -141,7 +141,11 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
 \end{claim}
 
 \begin{proof}
-  The proof is similar to the previous one
+  Consider the following:
+  \begin{itemize}
+    \item RHS is contained in LHS by \ref{WtoC}
+    \item If $\exp_q(v) \in C$ with $||v||<\rho$, then $\exp_q(DA_qv)=A\exp_q(v)=\exp_q(v)$. Since $DA_q$ is an isometry, $v \in W_q$
+  \end{itemize}
 \end{proof}
 
 \begin{claim}
@@ -149,7 +153,9 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
 \end{claim}
 
 \begin{proof}
-  Since $\exp_q:B_\rho \to U$ is a diffeomorphism $C \cap U$ is a submanifold.
+  We have that $W_q \cap B_\rho$ is a submanifold of $B_\rho$.
+  Since $\exp_q:B_\rho \to U$ is a diffeomorphism, by \ref{CWrelation} $C \cap U$ is a submanifold. 
+  Since this holds for all $q \in C$ and being a manifold is a local property, $C$ is a manifold.
 \end{proof}
 
 \begin{claim}
@@ -165,15 +171,15 @@ For $q \in C$ define the subspace $W_q$ of $T_qM$ to be the points which are fix
 \end{claim}
 
 \begin{proof}
-  Use \ref{CWrelation}
+  This follows directly from \ref{CWrelation}
 \end{proof}
 
-\begin{claim}
+\begin{claim}\label{totalC}
   $C$ is totally geodesic
 \end{claim}
 
 \begin{proof}
-  Use \ref{CtangentSpace}
+  Suppose $\gamma_v$ is the maximal geodesic at $q \in C$ with $v \in T_qC$. Now $\gamma_v(t)=\exp_q(tv) \in C$, by using \ref{CtangentSpace} and \ref{WtoC}
 \end{proof}
 
 Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sigma: \mathbb{R} \to C$ is a diffeomorphism
@@ -183,7 +189,7 @@ Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sig
 \end{claim}
 
 \begin{proof}
-  By \ref{relatingCov} we may take the covariant derivative in $C$. Now use \ref{CtangentSpace}
+  By \ref{relatingCov}, as well as \ref{nullQ} and \ref{totalC}, the covariant derivative is in $C$. Now use \ref{CtangentSpace}.
 \end{proof}
 
 \begin{claim}
@@ -206,7 +212,7 @@ Suppose now that $C$ is a connected one dimensional submanifold of $M$ and $\sig
 Suppose we have that
 
 \begin{itemize}
-  \item $W$ is a uniformly normal neighborhood of $p$
+  \item $W$ is a uniformly $\delta$-normal neighborhood of $p$
   \item $q_0=\exp_p(cv_0) \in W$
   \item $\rho$ is the injectivity radius at $p$
   \item $0<c<\rho$
@@ -218,6 +224,10 @@ Define $f:W \to [0,\infty)$ by $f(q)= [d_M(q_0,q)]^2$
 \begin{claim}
   $f$ is smooth 
 \end{claim}
+
+\begin{proof}
+  We know that $\exp_q:B_\delta \to \exp_q(B_\delta)$ is a diffeomorphism with inverse $\Psi$. Then $f(q)=||\Psi(q)||^2$
+\end{proof}
 
 \begin{claim}
   $\text{grad}_f(p)=-2cv_0$
