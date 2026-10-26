@@ -213,25 +213,33 @@ Suppose we have that
 
 \begin{itemize}
   \item $W$ is a uniformly $\delta$-normal neighborhood of $p$
-  \item $q_0=\exp_p(cv_0) \in W$
+  \item $q_0=\exp_p(v_0) \in W$
   \item $\rho$ is the injectivity radius at $p$
-  \item $0<c<\rho$
-  \item $v_0 \in T_pM$ is a unit vector
+  \item $0<||v_0||<\rho$
+  \item Define $f:W \to [0,\infty)$ by $f(q)= [d_M(q_0,q)]^2$
+  \item Define $\Psi$ to be the inverse of the diffeomorphism \[\exp_{q_0}:B_\delta \to \exp_{q_0}(B_\delta)\]
 \end{itemize}
-
-Define $f:W \to [0,\infty)$ by $f(q)= [d_M(q_0,q)]^2$
 
 \begin{claim}
   $f$ is smooth 
 \end{claim}
 
 \begin{proof}
-  We know that $\exp_q:B_\delta \to \exp_q(B_\delta)$ is a diffeomorphism with inverse $\Psi$. Then $f(q)=||\Psi(q)||^2$
+  We have $f(q)=||\Psi(q)||^2$
 \end{proof}
 
 \begin{claim}
-  $\text{grad}_f(p)=-2cv_0$
+  $\text{grad}_f(p)=-2v_0$
 \end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Let $\gamma:[0,1] \to M$ be the minimizing geodesic from $p$ to $q_0$
+    \item We have $\gamma(t)=\exp_p(tv_0)=\exp_{q_0}((1-t)w_0)$ where $\Psi(p)=w_0$
+    \item By Gauss lemma, $\text{grad}_f(p)=2(d\exp_{q_0})_{w_0}(w_0)=-2\gamma'(0)=-2v_0$ 
+  \end{itemize}
+\end{proof}
 
 \section{Removal of a point}
 
