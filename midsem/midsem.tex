@@ -249,8 +249,31 @@ Suppose $M$ is connected and $p \in M$. Define $N = M \setminus \{p\}$
   $N$ is a connected submanifold
 \end{claim}
 
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Since $N$ is open in $M$ it is a submanifold.
+    \item Suppose $N=U_1 \sqcup U_2$ is a separation. Taking closures we get $M=\overline{U_1} \cup \overline{U_2}$.
+          Since $M$ is connected these sets cannot be disjoint. Hence $p \in \overline{U_1} \cap \overline{U_2}$.
+          There is a connected neighborhood $V$ of $p$ such that $V \cap N$ is also connected. 
+          Without loss of generality we can assume $V$ is disjoint from $U_1$, which is a contradiction.
+  \end{itemize}
+\end{proof}
+
 \begin{claim}
   For all $q_1,q_2 \in N$ we have $d_N(q_1,q_2)=d_M(q_1,q_2)$
 \end{claim}
+
+\begin{proof}
+  Consider the following:
+  \begin{itemize}
+    \item Suppose $\gamma:[0,1] \to M$ is a curve from $q_1$ to $q_2$.
+          Let $S_r$ be the geodesic sphere of radius $r$. 
+          Let $t_0(r)$ and $t_1(r)$ be the first and last times at which $\gamma$ is in $S_r$.
+    \item Then \[d_N(q_1,q_2) \leq d_N(q_1,\gamma(t_0(r))) + d_N(\gamma(t_0(r)),\gamma(t_1(r))) + d_N(\gamma(t_1(r)),q_2) \] using the triangle inquality
+    \item We can bound this by \[\text{length}(\gamma_{|[0,t_0(r)]}) + \text{diam}(S_r) + \text{length}(\gamma_{|[t_1(r),1]}) \leq \text{length}(\gamma)+ \text{diam}(S_r)\]
+    \item Now take the limit as $r \to 0$
+  \end{itemize}
+\end{proof}
 
 \end{document}
